@@ -1,0 +1,49 @@
+class MyQueue {
+    int[]arr=new int[200];
+    int front=0;
+    int rear=0;
+
+    public MyQueue() {
+        int[] arr=new int[200];
+         int front=0;
+    int rear=0;
+
+        
+    }
+    
+    public void push(int x) {
+        if(rear==arr.length){
+            return;
+        }
+     arr[rear] =x;
+        rear +=1;
+
+    }
+    public int pop() {
+        int data;
+        if(empty()){
+            return -1;
+        }
+        else{
+          data=arr[front];
+            front+=1;
+        }
+        return data;
+    }
+     public int peek() {
+         return arr[front];
+        
+    }
+    
+    public boolean empty() {
+        if(front==rear || rear==0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+        
+    
+    }
+}
