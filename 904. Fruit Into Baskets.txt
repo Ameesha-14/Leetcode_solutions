@@ -1,0 +1,26 @@
+class Solution {
+    public int totalFruit(int[] fruits) {
+        int windowStart = 0;
+        int windowEnd = 0;
+        int maxLength = 0;
+        HashMap<Integer , Integer> hashmap = new HashMap<>();
+        
+        for (windowEnd = 0; windowEnd < fruits.length; windowEnd++) {
+            int currfruit = fruits[windowEnd];
+            hashmap.put(currfruit, hashmap.getOrDefault(currfruit, 0) + 1);
+            
+            while (hashmap.size() > 2) {
+                int leftfruit = fruits[windowStart];
+                hashmap.put(leftfruit, hashmap.get(leftfruit) - 1);
+                if (hashmap.get(leftfruit) == 0) {
+                    hashmap.remove(leftfruit);
+                }
+                windowStart++;
+            }
+            
+            maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+        }
+    
+        return maxLength;
+    }
+}
