@@ -1,0 +1,21 @@
+import java.util.PriorityQueue;
+
+class Solution {
+    public int maxProduct(int[] nums) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>((a, b) -> a - b);
+        
+        for (int num : nums) {
+            minHeap.add(num-1);
+        }
+        
+        while (minHeap.size() > 2) {
+            minHeap.poll();
+        }
+        
+        int num1 = minHeap.poll();
+        int num2 = minHeap.poll();
+        int ans = (num1) * (num2);
+        
+        return ans;
+    }
+}
